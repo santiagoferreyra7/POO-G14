@@ -1,6 +1,5 @@
 # Desafío: Calculadora con Historial
 
-
 ## Descripción del Desafío
 
 Bienvenidos al desafío 2. En este ejercicio, trabajarán en con su grupo para completar el proyecto de una **Calculadora con Historial** utilizando clases y herencia. Cada grupo recibirá uno de los tres archivos que componen el proyecto, y deberán colaborar para conseguir los archivos restantes y completar las partes que faltan.
