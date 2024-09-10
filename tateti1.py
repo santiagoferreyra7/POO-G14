@@ -1,42 +1,36 @@
-from Base import tablero   # type: ignore
+class tablero:
+    def __init__(self, filaseleccionada, columnaseleccionada, meter, gano, igualado):
+        self.filaseleccionada = filaseleccionada  
+        self.columnaseleccionada = columnaseleccionada
+        self.meter = meter
+        self.gano = gano  
+        self.igualado = igualado  
+        self.tablero = [[" " for _ in range(3)] for _ in range(3)]  # Tablero vacío de 3x3
 
+    def colocar_ficha(self, ficha):
+        # Coloca la ficha en la posición seleccionada
+        self.tablero[self.filaseleccionada][self.columnaseleccionada] = ficha
 
-class partidito(tablero):  
+    def triunfazo(self, ficha):
+        # Verifica si hay un ganador
+        # Comprobación de filas
+        for fila in self.tablero:
+            if all(celda == ficha for celda in fila):
+                return True
+        # Comprobación de columnas
+        for col in range(3):
+            if all(self.tablero[fila][col] == ficha for fila in range(3)):
+                return True
+        # Comprobación de diagonales
+        if all(self.tablero[i][i] == ficha for i in range(3)):
+            return True
+        if all(self.tablero[i][2 - i] == ficha for i in range(3)):
+            return True
+        return False
 
-
-    def __init__(self, FS, CS, meter, ficha1, ficha2, quienjuega, gano, empate):
-        super().__init__(FS, CS, meter, gano, empate)
-        self.ficha1 = ficha1  
-        self.ficha2 = ficha2
-        self.quienjuega = quienjuega
-    def mostrar(self):
-        i = 0
-        j = 0
-
-
-        print("------")
-
-
-        for i in range(0, 3):
-            print(" ", end=" ")
-
-
-            for j in range(0, 3):
-                print("|", end=" ")
-
-
-               
-                if self.meter == 1 or self.meter == 2:
-                    if i == self.CS and j == self.FS:
-                        if self.meter == 1:
-                            print(self.ficha1, end=" ")
-                        elif self.meter == 2:
-                            print(self.ficha2, end=" ")
-                    else:
-                        print(" ", end=" ")
-                else:
-                    print(" ", end=" ")
-
-
-            print("|", end="\n")
-            print("------")
+    def es_empate(self):
+        # Verifica si todas las posiciones están llenas y no hay ganador
+        for fila in self.tablero:
+            if " " in fila:
+                return False
+        return True
