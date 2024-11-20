@@ -10,7 +10,7 @@ class tablero:
 
     def colocar_ficha(self, ficha):
         # Coloca la ficha en la posición seleccionada
-        self.tablero[self.filaseleccionada][self.columnaseleccionada] = ficha
+        self.tablero[self.filaseleccionada][self.colupemnaseleccionada] = ficha
 
     def triunfazo(self, ficha):
         # Verifica si hay un ganador
